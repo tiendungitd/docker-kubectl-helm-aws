@@ -9,6 +9,7 @@ FROM lachlanevenson/k8s-kubectl:latest
 FROM alpine:3.10
 ENV AWSCLI_VERSION 1.16.190
 RUN apk add -U --no-cache python3 ca-certificates \
+    && apk add git \
     && pip3 install --no-cache-dir --upgrade pip \
     && pip3 --no-cache-dir install awscli==${AWSCLI_VERSION}
 COPY --from=0 /usr/local/bin/helm /usr/local/bin/helm
